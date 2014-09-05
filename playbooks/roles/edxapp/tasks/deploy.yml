@@ -174,7 +174,6 @@
     {{ edxapp_venv_dir }}/bin/pip install -i {{ edxapp_pypi_local_mirror }} --exists-action w --use-mirrors -r {{ item }}
     chdir={{ edxapp_code_dir }}
   with_items:
-  - "{{ repo_requirements_file }}"
   - "{{ github_requirements_file }}"
   - "{{ local_requirements_file }}"
   sudo_user: "{{ edxapp_user }}"
