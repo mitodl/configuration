@@ -10,7 +10,7 @@
   apt: pkg={{",".join(rabbitmq_debian_pkgs)}} state=present
 
 - name: add rabbit repository
-  apt_repository: repo="{{rabbitmq_repository}}" state=present
+  apt_repository_1.8: repo="{{rabbitmq_repository}}" state=present validate_certs=no
 
 - name: install rabbitmq
   apt: pkg={{rabbitmq_pkg}} state=present update_cache=yes

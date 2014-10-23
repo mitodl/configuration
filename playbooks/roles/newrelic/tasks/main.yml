@@ -31,7 +31,7 @@
     state=present
 
 - name: install apt repository
-  apt_repository: repo="{{ NEWRELIC_REPO }}" update_cache=yes
+  apt_repository_1.8: repo="{{ NEWRELIC_REPO }}" update_cache=yes validate_certs=no
 
 - name: install newrelic agent
   apt: pkg="newrelic-sysmond"
