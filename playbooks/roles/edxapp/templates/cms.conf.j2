@@ -1,9 +1,12 @@
 [program:cms]
-{% if ansible_processor|length > 0 %}
-command={{ edxapp_venv_dir }}/bin/gunicorn --preload -b {{ edxapp_cms_gunicorn_host }}:{{ edxapp_cms_gunicorn_port }} -w {{ ansible_processor|length * worker_core_mult.cms }} --timeout=300 --pythonpath={{ edxapp_code_dir }} cms.wsgi
-{% else %}
-command={{ edxapp_venv_dir }}/bin/gunicorn --preload -b {{ edxapp_cms_gunicorn_host }}:{{ edxapp_cms_gunicorn_port }} -w {{ worker_core_mult.cms }} --timeout=300 --pythonpath={{ edxapp_code_dir }} cms.wsgi
-{% endif %}
+
+{% if COMMON_ENABLE_NEWRELIC_APP -%}
+{% set executable = edxapp_venv_dir + '/bin/newrelic-admin run-program ' + edxapp_venv_dir + '/bin/gunicorn' -%}
+{% else -%}
+{% set executable = edxapp_venv_dir + '/bin/gunicorn' -%}
+{% endif -%}
+
+command={{ executable }} -c {{ edxapp_app_dir }}/cms_gunicorn.py {{ EDXAPP_CMS_GUNICORN_EXTRA }} cms.wsgi
 
 user={{ common_web_user }}
 directory={{ edxapp_code_dir }}
