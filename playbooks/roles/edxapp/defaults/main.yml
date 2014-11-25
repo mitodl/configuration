@@ -30,6 +30,8 @@ EDXAPP_LMS_GUNICORN_EXTRA_CONF: ""
 EDXAPP_CMS_GUNICORN_EXTRA: ""
 EDXAPP_CMS_GUNICORN_EXTRA_CONF: ""
 
+EDXAPP_WORKERS: !!null
+
 # Set this to the maximum number
 # of requests for gunicorn for the lms and cms
 # gunicorn --max-requests <num>
