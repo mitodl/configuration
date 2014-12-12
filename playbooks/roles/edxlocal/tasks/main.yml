@@ -51,6 +51,7 @@
     name={{ ORA_MYSQL_USER }}
     password={{ ORA_MYSQL_PASSWORD }}
     priv='{{ORA_MYSQL_DB_NAME}}.*:ALL'
+  when: ORA_MYSQL_USER is defined
 
 - name: create a database for ora
   mysql_db: >
