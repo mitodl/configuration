@@ -5,9 +5,6 @@
   sudo_user: "{{ edxapp_user }}"
   tags: edxapp_cfg
   with_items: service_variants_enabled
-  notify:
-  - "restart edxapp"
-  - "restart edxapp_workers"
 
 - name: "create {{ item }} auth file"
   template: >
@@ -15,9 +12,6 @@
     dest={{ edxapp_app_dir }}/{{ item }}.auth.json
   sudo_user: "{{ edxapp_user }}"
   tags: edxapp_cfg
-  notify:
-  - "restart edxapp"
-  - "restart edxapp_workers"
   with_items: service_variants_enabled
 
 # write the supervisor scripts for the service variants
@@ -42,8 +36,6 @@
     src={{ item }}_gunicorn.py.j2 dest={{ edxapp_app_dir }}/{{ item }}_gunicorn.py
   with_items: service_variants_enabled
   sudo_user: "{{ edxapp_user }}"
-  notify:
-    - restart edxapp
 
 # write the supervisor script for celery workers
 
@@ -97,9 +89,6 @@
   sudo_user: "{{ edxapp_user }}"
   environment:
     DB_MIGRATION_NAME: "{{ EDXAPP_TEST_MIGRATE_DB_NAME }}"
-  notify:
-  - "restart edxapp"
-  - "restart edxapp_workers"
 
 # Syncdb with migrate when the migrate user is overridden in extra vars
 - name: syncdb and migrate
@@ -111,9 +100,6 @@
     DB_MIGRATION_USER: "{{ COMMON_MYSQL_MIGRATE_USER }}"
     DB_MIGRATION_PASS: "{{ COMMON_MYSQL_MIGRATE_PASS }}"
   sudo_user: "{{ edxapp_user }}"
-  notify:
-  - "restart edxapp"
-  - "restart edxapp_workers"
 
 # Syncdb with migrate when the default migrate user is not set,
 # in this case use the EDXAPP_MYSQL_USER_MIGRATE user to run migrations
@@ -126,9 +112,6 @@
     DB_MIGRATION_USER: "{{ EDXAPP_MYSQL_USER_MIGRATE }}"
     DB_MIGRATION_PASS: "{{ EDXAPP_MYSQL_PASSWORD_MIGRATE }}"
   sudo_user: "{{ edxapp_user }}"
-  notify:
-  - "restart edxapp"
-  - "restart edxapp_workers"
 
 
 # Fake migrate, only when fake_migrations is defined
@@ -142,10 +125,6 @@
   sudo_user: "{{ edxapp_user }}"
   environment:
     DB_MIGRATION_NAME: "{{ EDXAPP_TEST_MIGRATE_DB_NAME }}"
-  notify:
-  - "restart edxapp"
-  - "restart edxapp_workers"
-
 
 
 # Regular migrations
@@ -158,9 +137,6 @@
     DB_MIGRATION_USER: "{{ EDXAPP_MYSQL_USER_MIGRATE }}"
     DB_MIGRATION_PASS: "{{ EDXAPP_MYSQL_PASSWORD_MIGRATE }}"
   sudo_user: "{{ edxapp_user }}"
-  notify:
-  - "restart edxapp"
-  - "restart edxapp_workers"
 
 
 # Gather assets using paver if possible
@@ -173,8 +149,4 @@
   sudo_user: "{{ edxapp_user }}"
   when: celery_worker is not defined and not devstack and item != "lms-preview"
   with_items: service_variants_enabled
-  notify:
-  - "restart edxapp"
-  - "restart edxapp_workers"
   environment: "{{ edxapp_environment }}"
-
