@@ -264,6 +264,7 @@ edxapp_chksum_req_files:
 # all edxapp requirements files
 edxapp_requirements_with_github_urls:
   - "{{ pre_requirements_file }}"
+  - "{{ post_requirements_file }}"
   - "{{ base_requirements_file }}"
   - "{{ paver_requirements_file }}"
   - "{{ github_requirements_file }}"
