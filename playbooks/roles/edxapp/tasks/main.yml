@@ -49,7 +49,7 @@
 
 - debug: var=EDXAPP_PYTHON_SANDBOX
 # Set up the python sandbox execution environment
-- include: python_sandbox_env.yml
+- include: python_sandbox_env.yml tags=deploy
   when: EDXAPP_PYTHON_SANDBOX
 
 - include: deploy.yml tags=deploy
