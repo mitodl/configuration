@@ -55,4 +55,5 @@
 - name: create haproxy monitor user
   command: >
     mysql -e "INSERT INTO mysql.user (Host,User) values ('{{ item }}','{{ MARIADB_HAPROXY_USER }}'); FLUSH PRIVILEGES;"
+    creates=/etc/ansible_{{ item }}_haproxy_added
   with_items: MARIADB_HAPROXY_HOSTS
