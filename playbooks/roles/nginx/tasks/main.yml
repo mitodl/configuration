@@ -26,11 +26,15 @@
   notify: restart nginx
 
 - name: Add nginx stable PPA
-  apt_repository: repo='ppa:nginx/stable'
+  apt_repository_1.8: repo='ppa:nginx/stable' validate_certs=no
   notify: restart nginx
 
 - name: Install nginx packages
   apt: pkg={{','.join(nginx_debian_pkgs)}} state=present
+  notify: restart nginx
+
+- name: Install latest nginx
+  apt: pkg=nginx state=latest
   notify: restart nginx
 
 - name: Server configuration file
