@@ -26,7 +26,6 @@ nginx_user: root
 nginx_htpasswd_file: "{{ nginx_app_dir }}/nginx.htpasswd"
 nginx_default_sites: []
 nginx_debian_pkgs:
-  - nginx
   - python-passlib
 
 nginx_template_dir: .
