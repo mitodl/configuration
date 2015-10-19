@@ -25,6 +25,10 @@
     - "{{ nginx_log_dir }}"
   notify: restart nginx
 
+- name: Add nginx stable PPA
+  apt_repository: repo='ppa:nginx/stable'
+  notify: restart nginx
+
 - name: Install nginx packages
   apt: pkg={{','.join(nginx_debian_pkgs)}} state=present
   notify: restart nginx
