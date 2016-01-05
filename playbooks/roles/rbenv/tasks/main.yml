@@ -121,8 +121,23 @@
   shell: "gem install rake -v {{ rbenv_rake_version }}"
   sudo_user: "{{ rbenv_user }}"
   environment: "{{ rbenv_environment }}"
+  when: jenkins_worker is not defined or not jenkins_worker
+  tags:
+    - install
+    - install:base
 
+- name: update rubygems
+  shell: "gem install rubygems-update && update_rubygems"
+  sudo_user: "{{ rbenv_user }}"
+  environment: "{{ rbenv_environment }}"
+  tags:
+    - install
+    - install:base
+    
 - name: rehash
   shell: "rbenv rehash"
   sudo_user: "{{ rbenv_user }}"
   environment: "{{ rbenv_environment }}"
+  tags:
+    - install
+    - install:base
