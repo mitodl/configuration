@@ -274,7 +274,7 @@ edxapp_chksum_req_files:
   - "{{ sandbox_base_requirements }}"
 
 # all edxapp requirements files
-edxapp_all_req_files:
+edxapp_requirements_with_github_urls:
   - "{{ pre_requirements_file }}"
   - "{{ post_requirements_file }}"
   - "{{ base_requirements_file }}"
