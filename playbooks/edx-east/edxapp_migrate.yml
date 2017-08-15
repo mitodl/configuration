@@ -1,6 +1,7 @@
 - name: Run edxapp migrations
   hosts: all
-  become: False
+  become: True
+  become_user: edxapp
   gather_facts: True
   vars:
     db_dry_run: "--list"
