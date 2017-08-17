@@ -56,7 +56,7 @@
   tags:
     - install
     - install:base
-  with_items:
+    - install:configuration
     - "{{ forum_env }}"
 
 - name: setup the forum env for devstack
@@ -71,6 +71,7 @@
   tags:
     - install
     - install:base
+    - install:configuration
   when: devstack is defined and devstack
   with_items:
     - "{{ devstack_forum_env }}"
