@@ -86,7 +86,7 @@
 
 - name: Install course specific python requirements
   pip:
-    requirements: "{{ xqwatcher_app_data }}/{{ item.QUEUE_CONFIG.HANDLERS[0].CODEJAIL.name }}-requirements.txt"
+    requirements: "{{ xqwatcher_app_dir }}/data/{{ item.QUEUE_CONFIG.HANDLERS[0].CODEJAIL.name }}-requirements.txt"
     virtualenv: "{{ xqwatcher_app_dir }}/venvs/{{ item.QUEUE_CONFIG.HANDLERS[0].CODEJAIL.name }}"
     state: present
     extra_args: "{{ XQWATCHER_PIP_EXTRA_ARGS }}"
