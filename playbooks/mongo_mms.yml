@@ -10,5 +10,3 @@
     - mongo_mms
     - role: datadog
       when: COMMON_ENABLE_DATADOG
-    - role: datadog-uninstall
-      when: not COMMON_ENABLE_DATADOG
