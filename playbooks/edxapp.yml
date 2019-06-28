@@ -31,8 +31,6 @@
      when: COMMON_ENABLE_NEWRELIC_INFRASTRUCTURE
    - role: minos
      when: COMMON_ENABLE_MINOS
-   - role: datadog-uninstall
-     when: not COMMON_ENABLE_DATADOG
    - role: hermes
      when: "EDXAPP_HERMES_ENABLED"
      HERMES_JITTER: 600
