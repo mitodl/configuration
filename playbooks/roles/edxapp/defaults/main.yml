@@ -141,6 +141,7 @@ EDXAPP_AWS_SES_REGION_ENDPOINT: "email.us-east-1.amazonaws.com"
 EDXAPP_LOG_LEVEL: 'INFO'
 
 EDXAPP_MEMCACHE: [ 'localhost:11211' ]
+EDXAPP_CACHE_OPTIONS: {}
 EDXAPP_CACHE_COURSE_STRUCTURE_MEMCACHE: "{{ EDXAPP_MEMCACHE }}"
 EDXAPP_CACHE_BACKEND: 'django.core.cache.backends.memcached.MemcachedCache'
 EDXAPP_COMMENTS_SERVICE_URL:  'http://localhost:18080'
@@ -1132,6 +1133,7 @@ edxapp_generic_auth_config:  &edxapp_generic_auth
 generic_cache_config: &default_generic_cache
   BACKEND:  "{{ EDXAPP_CACHE_BACKEND }}"
   KEY_FUNCTION:  'util.memcache.safe_key'
+  OPTIONS: "{{ EDXAPP_CACHE_OPTIONS }}"
 
 generic_env_config:  &edxapp_generic_env
   IDA_LOGOUT_URI_LIST: "{{ EDXAPP_IDA_LOGOUT_URI_LIST }}"
