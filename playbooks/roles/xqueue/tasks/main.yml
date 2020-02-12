@@ -62,6 +62,17 @@
     - install
     - install:configuration
 
+- name: "Downgrade setuptools in xqueue venv"
+  pip:
+    name: 'setuptools<45'
+    virtualenv: "{{ xqueue_venv_dir }}"
+    state: present
+    extra_args: "-i {{ COMMON_PYPI_MIRROR_URL }} --exists-action w"
+  become_user: "{{ xqueue_user }}"
+  tags:
+    - install
+    - install:app-requirements
+
 # Install the python requirements into {{ xqueue_venv_dir }}
 - name: "Install python requirements"
   pip:
