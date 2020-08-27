@@ -312,13 +312,13 @@
 - name: code sandbox | test enforcement 1
   command: "{{ edxapp_sandbox_venv_dir }}/bin/python -c \"import os; os.listdir('/')\""
   register: sandbox_test1
-  failed_when: "'PermissionError:' not in sandbox_test1.stderr"
+  failed_when: "'OSError:' not in sandbox_test1.stderr"
   when: EDXAPP_SANDBOX_ENFORCE
 
 - name: code sandbox | test enforcement 2
   command: "{{ edxapp_sandbox_venv_dir }}/bin/python -c \"import subprocess; subprocess.check_output('ls', shell=True)\""
   register: sandbox_test2
-  failed_when: "'PermissionError:' not in sandbox_test2.stderr"
+  failed_when: "'OSError:' not in sandbox_test2.stderr"
   when: EDXAPP_SANDBOX_ENFORCE
 
 - name: code sandbox | test enforcement 3
