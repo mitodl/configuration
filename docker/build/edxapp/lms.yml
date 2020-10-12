@@ -98,9 +98,6 @@ CACHES:
         KEY_PREFIX: 1001c6274ca4_general
         LOCATION:
         - edx.devstack.memcached:11211
-CAS_ATTRIBUTE_CALLBACK: ''
-CAS_EXTRA_LOGIN_PARAMS: ''
-CAS_SERVER_URL: ''
 CC_PROCESSOR:
     CyberSource:
         MERCHANT_ID: ''
