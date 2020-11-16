@@ -45,10 +45,6 @@
     - role: prospectus
       when: PROSPECTUS_ENABLED
     - oauth_client_setup
-    - role: datadog
-      when: COMMON_ENABLE_DATADOG
     - role: splunkforwarder
       when: COMMON_ENABLE_SPLUNKFORWARDER
-    - role: datadog-uninstall
-      when: not COMMON_ENABLE_DATADOG
     - flower
