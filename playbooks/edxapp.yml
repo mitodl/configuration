@@ -21,6 +21,8 @@
      nginx_extra_configs: "{{ NGINX_EDXAPP_EXTRA_CONFIGS }}"
      nginx_skip_enable_sites: "{{ EDXAPP_NGINX_SKIP_ENABLE_SITES }}"
    - edxapp
+   - role: mfe_deployer
+     when: EDXAPP_MANAGE_MICROFRONTENDS
    - role: sqlite_fix
      when: devstack is defined and devstack
    - role: splunkforwarder
