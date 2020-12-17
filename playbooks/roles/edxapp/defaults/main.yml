@@ -1010,6 +1010,9 @@ EDXAPP_MAINTENANCE_BANNER_TEXT: "Sample banner message"
 EDXAPP_PASSWORD_POLICY_COMPLIANCE_ROLLOUT_CONFIG:
   ENFORCE_COMPLIANCE_ON_LOGIN: false
 
+# Enables deploying microfrontends as part of edxapp. Requires configuring roles/mfe_deployer
+EDXAPP_MANAGE_MICROFRONTENDS: false
+
 # Needed to link the LMS instructor dashboard to the writable gradebook micro-frontend
 EDXAPP_LMS_WRITABLE_GRADEBOOK_URL: null
 

@@ -269,6 +269,15 @@ error_page {{ k }} {{ v }};
     try_files $uri @proxy_to_lms_app;
   }
 
+  {% if EDXAPP_MANAGE_MICROFRONTENDS %}
+    {% for mfe in MFES %}
+  location ~ ^{{ mfe.public_path }}?(.*)$  {
+      root  {{ COMMON_APP_DIR }}/{{ mfe.name }}/{{ mfe.repo }}/dist/;
+      try_files /$1 {{ mfe.public_path }}index.html;
+  }
+    {% endfor %}
+  {% endif %}
+
   location /courses {
     {%- if EDXAPP_ENABLE_RATE_LIMITING -%}
     # Set Limit

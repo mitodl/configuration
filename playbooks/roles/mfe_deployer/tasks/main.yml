@@ -30,7 +30,7 @@
     owner: root
     group: "{{ common_web_user }}"
     mode: 0640
-  when: nginx_app_dir is defined and not MFE_DEPLOY_STANDALONE_NGINX
+  when: nginx_app_dir is defined and not MFE_DEPLOY_STANDALONE_NGINX and not EDXAPP_MANAGE_MICROFRONTENDS
   notify: reload nginx
   tags:
     - install:base
@@ -43,9 +43,8 @@
     state: link
     owner: root
     group: root
-  when: nginx_app_dir is defined and not MFE_DEPLOY_STANDALONE_NGINX
+  when: nginx_app_dir is defined and not MFE_DEPLOY_STANDALONE_NGINX and not EDXAPP_MANAGE_MICROFRONTENDS
   notify: reload nginx
   tags:
     - install:base
     - install:vhosts
-
