@@ -219,10 +219,6 @@ EDXAPP_ANALYTICS_DASHBOARD_NAME: "{{ EDXAPP_PLATFORM_NAME }} Insights"
 EDXAPP_LMS_ANALYTICS_API_KEY: ''
 EDXAPP_LMS_ANALYTICS_API_URL: 'http://localhost:18100'
 
-EDXAPP_CAS_SERVER_URL: ""
-EDXAPP_CAS_EXTRA_LOGIN_PARAMS: ""
-EDXAPP_CAS_ATTRIBUTE_CALLBACK: ""
-EDXAPP_CAS_ATTRIBUTE_PACKAGE: ""
 # Enable an end-point that creates a user and logs them in
 # Used for performance testing
 EDXAPP_ENABLE_AUTO_AUTH: false
@@ -541,7 +537,7 @@ EDXAPP_EXTRA_REQUIREMENTS: []
 #   - name: git+https://git.myproject.org/MyProject#egg=MyProject
 EDXAPP_PRIVATE_REQUIREMENTS:
     # For Harvard courses:
-    - name: xblock-problem-builder==5.0.0
+    - name: xblock-problem-builder==5.1.0
     # Oppia XBlock
     - name: git+https://github.com/oppia/xblock.git@1030adb3590ad2d32c93443cc8690db0985d76b6#egg=oppia-xblock
       extra_args: -e
@@ -567,7 +563,6 @@ EDXAPP_PRIVATE_REQUIREMENTS:
       extra_args: -e
     - name: git+https://github.com/open-craft/xblock-activetable.git@d3fb772435c382b59293e4e688a6a3096c4f6fd7#egg=activetable-xblock
       extra_args: -e
-    - name: edx-zoom==2.0.1
     # Stanford-developed XBlocks (technically unsupported, but here to ease migration of courses from Lagunita)
     - name: git+https://github.com/edx/xblock-qualtrics-survey.git@02d87f567ec2af4579642cf795bb851507d6edf9#egg=xblock_qualtrics_survey
       extra_args: -e
@@ -1456,9 +1451,6 @@ generic_env_config:  &edxapp_generic_env
   SERVER_EMAIL: "{{ EDXAPP_DEFAULT_SERVER_EMAIL }}"
   BULK_EMAIL_DEFAULT_FROM_EMAIL: "{{ EDXAPP_BULK_EMAIL_DEFAULT_FROM_EMAIL }}"
   BULK_EMAIL_LOG_SENT_EMAILS: "{{ EDXAPP_BULK_EMAIL_LOG_SENT_EMAILS }}"
-  CAS_SERVER_URL: "{{ EDXAPP_CAS_SERVER_URL }}"
-  CAS_EXTRA_LOGIN_PARAMS: "{{ EDXAPP_CAS_EXTRA_LOGIN_PARAMS }}"
-  CAS_ATTRIBUTE_CALLBACK: "{{ EDXAPP_CAS_ATTRIBUTE_CALLBACK }}"
   UNIVERSITY_EMAIL: "{{ EDXAPP_UNIVERSITY_EMAIL }}"
   PRESS_EMAIL: "{{ EDXAPP_PRESS_EMAIL }}"
   SOCIAL_MEDIA_FOOTER_URLS: "{{ EDXAPP_SOCIAL_MEDIA_FOOTER_URLS }}"
